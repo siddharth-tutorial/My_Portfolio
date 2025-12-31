@@ -19,7 +19,7 @@ function Project() {
       title: "Akash Weds Shreya",
       description:
         "Detailed Wedding Invitation PDF covering all event details.",
-      pdfSrc: "/akash weds shreya.pdf",
+      pdfSrc: "/Akash weds shreya.pdf",
       type: "pdf",
     },
     {
