@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+# Live Project
+
+This project was bootstrap [Varcel](https://siddharthvanecha.vercel.app/)
+
+>>>>>>> 9c6a5941327983a15471399928646d1a01064636
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

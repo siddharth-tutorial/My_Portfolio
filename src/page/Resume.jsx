@@ -12,9 +12,11 @@ function Resume() {
     const timer = setTimeout(() => setLoading(false), 3000);
     return () => clearTimeout(timer);
   }, []);
+
   if (loading) {
     return <Loader />;
   }
+
   return (
     <div
       style={{
@@ -25,10 +27,79 @@ function Resume() {
         overflow: "hidden",
       }}
     >
+      {/* Background SVG - Animated Orbs & Stars */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="100%"
+        height="100%"
+        preserveAspectRatio="xMidYMid slice"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      >
+        <defs>
+          <radialGradient id="orbGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#4f8cff" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="#4f8cff" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+
+        {[...Array(10)].map((_, i) => (
+          <circle
+            key={`orb-${i}`}
+            cx={Math.random() * 1920}
+            cy={Math.random() * 1080}
+            r={80 + Math.random() * 120}
+            fill="url(#orbGlow)"
+            opacity="0.2"
+          >
+            <animate
+              attributeName="r"
+              values="70;120;70"
+              dur={`${12 + Math.random() * 6}s`}
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0.1;0.3;0.1"
+              dur={`${10 + Math.random() * 5}s`}
+              repeatCount="indefinite"
+            />
+          </circle>
+        ))}
+
+        {[...Array(120)].map((_, i) => (
+          <circle
+            key={`star-${i}`}
+            cx={Math.random() * 1920}
+            cy={Math.random() * 1080}
+            r={Math.random() * 1.5 + 0.5}
+            fill="url(#starGlow)"
+          >
+            <animate
+              attributeName="opacity"
+              values="0.2;1;0.2"
+              dur={`${2 + Math.random() * 3}s`}
+              repeatCount="indefinite"
+            />
+          </circle>
+        ))}
+      </svg>
+
       <Header />
 
-      <Container className="flex-grow-1 d-flex flex-column align-items-center py-4">
-        {/* ✅ Top Open Resume Button */}
+      <Container
+        className="flex-grow-1 d-flex flex-column align-items-center py-4"
+        style={{ position: "relative", zIndex: 1 }}
+      >
         <div className="text-center mt-4">
           <Button
             href="/SiddharthCV.pdf"
