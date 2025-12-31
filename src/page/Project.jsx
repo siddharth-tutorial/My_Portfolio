@@ -152,8 +152,9 @@ function Project() {
                     controls
                     style={{
                       height: "200px",
-                      width: "100%",
-                      objectFit: "cover",
+                      width: "100%", 
+                      objectFit: "contain", 
+                      background: "#000", 
                       borderTopLeftRadius: "13px",
                       borderTopRightRadius: "13px",
                     }}
